@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Укрспецобладнання
+  </title>
+
+  <!-- Bootstrap -->
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Google Font -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- PDFMake -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+      background:
+      linear-gradient(
+        135deg,
+        #eef4ff,
+        #f8fafc
+      );
+
+      font-family:'Inter',sans-serif;
+
+      color:#0f172a;
+
+      min-height:100vh;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+
+      background:
+      rgba(15,23,42,0.92);
+
+      backdrop-filter:blur(10px);
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+
+      padding:16px 0;
+    }
+
+    .navbar-brand{
+
+      font-weight:800;
+
+      font-size:22px;
+
+      letter-spacing:0.5px;
+    }
+
+    /* HERO */
+
+    header{
+      padding:70px 20px 40px;
+    }
+
+    .hero-box{
+
+      max-width:950px;
+
+      margin:auto;
+
+      border-radius:35px;
+
+      padding:70px 50px;
+
+      text-align:center;
+
+      background:
+      linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #2563eb
+      );
+
+      color:white;
+
+      box-shadow:
+      0 25px 60px rgba(37,99,235,0.18);
+    }
+
+    .hero-box h1{
+
+      font-size:28px;
+
+      font-weight:600;
+
+      margin-bottom:10px;
+    }
+
+    .hero-box p{
+
+      color:#dbeafe;
+
+      font-size:15px;
+
+      line-height:1.6;
+    }
+
+    /* MAIN CARD */
+
+    .main-card,
+    .receipt{
+
+      background:
+      rgba(255,255,255,0.88);
+
+      backdrop-filter:blur(12px);
+
+      border:
+      1px solid rgba(255,255,255,0.5);
+
+      border-radius:30px;
+
+      padding:40px;
+
+      box-shadow:
+      0 20px 60px rgba(15,23,42,0.08);
+    }
+
+    h2,h3,h5{
+
+      font-weight:700;
+
+      color:#0f172a;
+    }
+
+    /* INPUTS */
+
+    .form-control,
+    .form-select{
+
+      background:#f1f5f9;
+
+      border:none;
+
+      border-radius:16px;
+
+      padding:15px 18px;
+
+      font-size:15px;
+
+      transition:0.2s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus{
+
+      background:white;
+
+      box-shadow:
+      0 0 0 4px rgba(37,99,235,0.15);
+
+      border:none;
+    }
+
+    /* SERVICE BOX */
+
+    .service-box{
+
+      background:white;
+
+      border-radius:18px;
+
+      padding:18px;
+
+      margin-bottom:14px;
+
+      border:1px solid #e2e8f0;
+
+      transition:0.25s ease;
+    }
+
+    .service-box:hover{
+
+      transform:
+      translateY(-3px);
+
+      border-color:#93c5fd;
+
+      box-shadow:
+      0 12px 30px rgba(59,130,246,0.10);
+    }
+
+    /* CHECKBOX */
+
+    .form-check-input{
+
+      width:22px;
+
+      height:22px;
+
+      cursor:pointer;
+    }
+
+    .form-check-label{
+
+      margin-left:10px;
+
+      cursor:pointer;
+
+      width:100%;
+    }
+
+    /* TOTAL */
+
+    .total-box{
+
+      background:
+      linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+      );
+
+      color:white;
+
+      border-radius:15px;
+
+      padding:24px;
+
+      text-align:center;
+
+      font-size:15px;
+
+      font-weight:400;
+
+      box-shadow:
+      0 15px 20px rgba(37,99,235,0.22);
+    }
+
+    /* BUTTONS */
+
+    .btn{
+
+      border:none;
+
+      border-radius:16px;
+
+      padding:14px 22px;
+
+      font-weight:600;
+
+      transition:0.2s ease;
+    }
+
+    .btn-dark{
+
+      background:
+      linear-gradient(
+        135deg,
+        #111827,
+        #1e293b
+      );
+    }
+
+    .btn-dark:hover{
+
+      transform:
+      translateY(-2px);
+
+      opacity:0.95;
+    }
+
+    .btn-success{
+
+      background:
+      linear-gradient(
+        135deg,
+        #16a34a,
+        #15803d
+      );
+    }
+
+    .btn-success:hover{
+      opacity:0.92;
+    }
+
+    .btn-secondary{
+
+      background:
+      linear-gradient(
+        135deg,
+        #64748b,
+        #475569
+      );
+    }
+
+    .btn-secondary:hover{
+      opacity:0.92;
+    }
+
+    /* RECEIPT */
+
+    #receiptContent{
+
+      background:#f8fafc;
+
+      border-radius:20px;
+
+      padding:25px;
+
+      border:1px solid #e2e8f0;
+    }
+
+    /* PAGE */
+
+    .page{
+
+      display:none;
+
+      animation:fade 0.35s ease;
+    }
+
+    .active-page{
+      display:block;
+    }
+
+    @keyframes fade{
+
+      from{
+        opacity:0;
+        transform:translateY(12px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .hero-box{
+
+        padding:45px 25px;
+      }
+
+      .hero-box h1{
+
+        font-size:34px;
+      }
+
+      .hero-box p{
+
+        font-size:16px;
+      }
+
+      .main-card,
+      .receipt{
+
+        padding:25px;
+      }
+
+      .total-box{
+
+        font-size:24px;
+      }
+
+    }
+.main-card{
+  transition:0.3s;
+}
+
+.main-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 70px rgba(37,99,235,0.15);
+}
+
+.btn{
+  border-radius:14px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+section{
+  animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+.btn-back{
+  background:#0065f3;
+  color:rgb(255, 255, 255);
+  font-weight:600;
+  border:none;
+  border-radius:14px;
+  padding:12px;
+  transition:0.3s;
+}
+
+.btn-back:hover{
+  background:#0044ff;
+  transform:translateY(-2px);
+}
+
+  </style>
+
+</head>
+
+<body style="
+background:
+linear-gradient(rgba(10,15,30,0.85), rgba(10,15,30,0.85)),
+url('images/02.png');
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+font-family:'Inter',sans-serif;
+min-height:100vh;
+">
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar navbar-dark">
+
+    <div class="container">
+
+     <span class="navbar-brand d-flex align-items-center gap-2">
+
+  <img
+    src="images/01.png"
+    alt="Логотип"
+    style="height:40px;width:auto;"
+  >
+
+  Укрспецобладнання
+
+</span>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+ <!-- START PAGE -->
+<div id="startPage" class="page active-page">
+
+  <header>
+
+    <div class="container">
+
+      <div class="hero-box">
+
+        <h1 class="display-5 fw-bold mb-4">
+          Приватне підприємство «Укрспецобладнання»
+        </h1>
+
+        <p class="lead mb-4">
+          Сучасний сервісний центр з ремонту та обслуговування комп’ютерної техніки та ноутбуків.
+        </p>
+
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+          <button class="btn btn-light btn-lg px-5 py-3"
+            onclick="showPage('formPage')">
+
+            Оформити замовлення
+
+          </button>
+
+          <button class="btn btn-outline-light btn-lg px-5 py-3"
+            onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+
+            Наші послуги
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+
+    <div class="container">
+
+      <div class="text-center mb-5">
+
+        <h2 class="fw-bold" style="color:#ffffff;">
+  Наші послуги
+</h2>
+
+<p style="color:#ffffff !important;">
+  Що ми робимо для клієнтів
+</p>
+
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="main-card text-center h-100">
+            <div style="font-size:55px;">🔧</div>
+            <h5 class="fw-bold mt-3">Ремонт ПК</h5>
+            <p class="text-muted">Будь-яка складність ремонту комп’ютерів.</p>
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="main-card text-center h-100">
+            <div style="font-size:55px;">💻</div>
+            <h5 class="fw-bold mt-3">ПЗ / Windows</h5>
+            <p class="text-muted">Встановлення систем та програм.</p>
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="main-card text-center h-100">
+            <div style="font-size:55px;">🧹</div>
+            <h5 class="fw-bold mt-3">Чистка</h5>
+            <p class="text-muted">Очищення від пилу та перегріву.</p>
+          </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+
+          <div class="main-card text-center h-100">
+            <div style="font-size:55px;">⚡</div>
+            <h5 class="fw-bold mt-3">Модернізація</h5>
+            <p class="text-muted">Покращення продуктивності ПК.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="pb-5">
+
+    <div class="container">
+
+      <div class="main-card">
+
+        <div class="row align-items-center">
+
+          <div class="col-lg-7">
+
+            <h2 class="fw-bold mb-4">
+              Про компанію
+            </h2>
+
+            <p class="text-muted fs-5">
+              ПП «Укрспецобладнання» — сервісний центр з ремонту комп’ютерної техніки та ноутбуків.
+            </p>
+
+            <p class="text-muted fs-5">
+              Ми працюємо швидко, якісно та з гарантією на всі види робіт.
+            </p>
+
+          </div>
+
+          <div class="col-lg-5 text-center">
+
+            <div style="background:linear-gradient(135deg,#2563eb,#0f172a);
+                        border-radius:30px;
+                        padding:50px 30px;
+                        color:white;">
+
+              <h3 class="fw-bold mb-3">Потрібен ремонт?</h3>
+
+              <p class="mb-4">Оформіть заявку прямо зараз</p>
+
+              <button class="btn btn-light btn-lg px-4"
+                onclick="showPage('formPage')">
+
+                Перейти до замовлення
+
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+  <div class="container pb-5">
+
+    <!-- FORM PAGE -->
+
+<div id="formPage" class="page">
+ <button class="btn btn-back w-100 mb-3"
+    onclick="showPage('startPage')">
+    ← Повернутися на головну
+  </button>
+      <div class="main-card">
+
+        <h3 class="mb-4">
+
+          Оформлення замовлення
+
+        </h3>
+
+        <form id="form">
+
+          <div class="row">
+
+            <div class="col-md-6">
+
+              <input
+                type="text"
+                id="name"
+                class="form-control mb-3"
+                placeholder="Ім'я"
+                required
+              >
+
+            </div>
+
+            <div class="col-md-6">
+
+              <input
+                type="text"
+                id="surname"
+                class="form-control mb-3"
+                placeholder="Прізвище"
+                required
+              >
+
+            </div>
+
+          </div>
+
+          <input
+            type="text"
+            id="phone"
+            class="form-control mb-4"
+            placeholder="Телефон"
+            required
+          >
+
+          <!-- DEVICE -->
+
+          <label class="fw-bold mb-2">
+
+            Тип пристрою
+
+          </label>
+
+          <select
+            id="device"
+            class="form-select mb-4"
+            required
+          >
+
+            <option value="">
+
+              Оберіть пристрій
+
+            </option>
+
+            <option value="pc">
+
+              Стаціонарний ПК
+
+            </option>
+
+            <option value="laptop">
+
+              Ноутбук
+
+            </option>
+
+          </select>
+
+          <!-- SERVICES -->
+
+          <h5 class="mb-3">
+
+            Послуги
+
+          </h5>
+
+          <div class="service-box">
+
+            <div class="form-check">
+
+              <input
+                class="form-check-input service"
+                type="checkbox"
+                id="s1"
+                data-base="300"
+              >
+
+              <label
+                class="form-check-label"
+                for="s1"
+                data-name="Професійна чистка"
+              ></label>
+
+            </div>
+
+          </div>
+
+          <div class="service-box">
+
+            <div class="form-check">
+
+              <input
+                class="form-check-input service"
+                type="checkbox"
+                id="s2"
+                data-base="700"
+              >
+
+              <label
+                class="form-check-label"
+                for="s2"
+                data-name="Встановлення Windows"
+              ></label>
+
+            </div>
+
+          </div>
+
+          <div class="service-box">
+
+            <div class="form-check">
+
+              <input
+                class="form-check-input service"
+                type="checkbox"
+                id="s3"
+                data-base="250"
+              >
+
+              <label
+                class="form-check-label"
+                for="s3"
+                data-name="Діагностика"
+              ></label>
+
+            </div>
+
+          </div>
+
+          <div class="service-box">
+
+            <div class="form-check">
+
+              <input
+                class="form-check-input service"
+                type="checkbox"
+                id="s4"
+                data-base="500"
+              >
+
+              <label
+                class="form-check-label"
+                for="s4"
+                data-name="Заміна комплектуючих"
+              ></label>
+
+            </div>
+
+          </div>
+
+          <div class="service-box">
+
+            <div class="form-check">
+
+              <input
+                class="form-check-input service"
+                type="checkbox"
+                id="s5"
+                data-base="400"
+              >
+
+              <label
+                class="form-check-label"
+                for="s5"
+                data-name="Видалення вірусів"
+              ></label>
+
+            </div>
+
+          </div>
+
+          <!-- URGENT -->
+
+          <div class="form-check mt-4 mb-4">
+
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="urgent"
+            >
+
+            <label class="form-check-label fw-bold">
+
+              Термінове виконання (+300 грн)
+
+            </label>
+
+          </div>
+
+          <!-- PAYMENT -->
+
+          <h5 class="mb-3">
+
+            Спосіб оплати
+
+          </h5>
+
+          <div class="form-check">
+
+            <input
+              class="form-check-input"
+              type="radio"
+              name="payment"
+              value="Готівка"
+              required
+            >
+
+            <label class="form-check-label">
+
+              Готівка
+
+            </label>
+
+          </div>
+
+          <div class="form-check mb-4">
+
+            <input
+              class="form-check-input"
+              type="radio"
+              name="payment"
+              value="Картка"
+            >
+
+            <label class="form-check-label">
+
+              Картка
+
+            </label>
+
+          </div>
+
+          <!-- TOTAL -->
+
+          <div class="total-box mb-4">
+
+            Сума:
+            <span id="total">0</span>
+            грн
+
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-dark w-100 py-3"
+          >
+
+            Оформити замовлення
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <!-- RECEIPT -->
+
+    <div
+      id="receiptPage"
+      class="page"
+    >
+
+      <div class="receipt">
+
+        <h2 class="mb-4">
+
+          Замовлення оформлено
+
+        </h2>
+
+        <div id="receiptContent"></div>
+
+        <div class="mt-4 d-flex gap-3">
+
+          <button
+            class="btn btn-success"
+            onclick="generatePDF()"
+          >
+
+            Завантажити PDF
+
+          </button>
+
+          <button
+            class="btn btn-secondary"
+            onclick="goBack()"
+          >
+
+            Нове замовлення
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const services =
+      document.querySelectorAll('.service');
+
+    const totalEl =
+      document.getElementById('total');
+
+    const device =
+      document.getElementById('device');
+
+    const urgent =
+      document.getElementById('urgent');
+
+    const receiptContent =
+      document.getElementById('receiptContent');
+
+    const form =
+      document.getElementById('form');
+
+    function getMultiplier(){
+
+      if(device.value === 'laptop'){
+        return 1.4;
+      }
+
+      if(device.value === 'pc'){
+        return 1;
+      }
+
+      return 0;
+    }
+
+    function updatePrices(){
+
+      const multiplier =
+        getMultiplier();
+
+      services.forEach(service=>{
+
+        const label =
+          document.querySelector(
+            `label[for="${service.id}"]`
+          );
+
+        const base =
+          Number(service.dataset.base);
+
+        const finalPrice =
+          Math.round(base * multiplier);
+
+        service.dataset.price =
+          finalPrice;
+
+        label.innerHTML =
+
+          `${label.dataset.name}
+
+          <span class="float-end fw-bold text-primary">
+
+          ${finalPrice} грн
+
+          </span>`;
+      });
+    }
+
+    function calculateTotal(){
+
+      let total = 0;
+
+      services.forEach(service=>{
+
+        if(service.checked){
+
+          total +=
+            Number(service.dataset.price);
+        }
+
+      });
+
+      if(urgent.checked){
+
+        total += 300;
+      }
+
+      totalEl.innerText = total;
+
+      return total;
+    }
+
+    function getSelectedServices(){
+
+      let list = [];
+
+      services.forEach(service=>{
+
+        if(service.checked){
+
+          const label =
+            document.querySelector(
+              `label[for="${service.id}"]`
+            );
+
+          list.push({
+
+            name:
+              label.dataset.name,
+
+            price:
+              service.dataset.price
+          });
+
+        }
+
+      });
+
+      return list;
+    }
+
+    function showPage(page){
+
+      document
+        .querySelectorAll('.page')
+        .forEach(p=>
+          p.classList.remove('active-page')
+        );
+
+      document
+        .getElementById(page)
+        .classList.add('active-page');
+    }
+
+    function goBack(){
+
+      form.reset();
+
+      totalEl.innerText = 0;
+
+      updatePrices();
+
+      showPage('formPage');
+    }
+
+    function getPayment(){
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        );
+
+      return payment
+        ? payment.value
+        : 'Не вибрано';
+    }
+
+    form.addEventListener('submit', function(e){
+
+      e.preventDefault();
+
+      const total =
+        calculateTotal();
+
+      const deviceName =
+
+        device.value === 'laptop'
+        ? 'Ноутбук'
+        : 'Стаціонарний ПК';
+
+      receiptContent.innerHTML = `
+
+        <div class="mb-3">
+
+          <b>Клієнт:</b>
+
+          ${document.getElementById('surname').value}
+
+          ${document.getElementById('name').value}
+
+        </div>
+
+        <div class="mb-3">
+
+          <b>Телефон:</b>
+
+          ${document.getElementById('phone').value}
+
+        </div>
+
+        <div class="mb-3">
+
+          <b>Пристрій:</b>
+
+          ${deviceName}
+
+        </div>
+
+        <div class="mb-3">
+
+          <b>Оплата:</b>
+
+          ${getPayment()}
+
+        </div>
+
+        <div class="mb-3">
+
+          <b>Сума:</b>
+
+          ${total} грн
+
+        </div>
+      `;
+
+      showPage('receiptPage');
+
+    });
+
+    function generatePDF(){
+
+      const currentDate =
+        new Date();
+
+      const orderNumber =
+        Math.floor(Math.random()*900000)+100000;
+
+      const servicesData =
+        getSelectedServices();
+
+      let tableBody = [
+
+        [
+          {text:'Послуга',bold:true},
+          {text:'Ціна',bold:true}
+        ]
+
+      ];
+
+      servicesData.forEach(service=>{
+
+        tableBody.push([
+
+          service.name,
+
+          `${service.price} грн`
+        ]);
+
+      });
+
+      if(urgent.checked){
+
+        tableBody.push([
+
+          'Термінове виконання',
+
+          '300 грн'
+        ]);
+
+      }
+
+      tableBody.push([
+
+        {
+          text:'ЗАГАЛОМ',
+          bold:true
+        },
+
+        {
+          text:`${totalEl.innerText} грн`,
+          bold:true
+        }
+
+      ]);
+
+      const docDefinition = {
+
+        content:[
+
+          {
+            text:'УКРСПЕЦОБЛАДНАННЯ',
+            style:'company'
+          },
+
+          {
+            text:'СЕРВІС КОМП’ЮТЕРНОЇ ТЕХНІКИ',
+            style:'subtitle'
+          },
+
+          {
+            text:' +380 (95) 326-09-48',
+            style:'contacts'
+          },
+
+          {
+            text:'\nКАСОВИЙ ЧЕК\n',
+            style:'title'
+          },
+
+          {
+            columns:[
+
+              [
+
+                `№ Замовлення: ${orderNumber}`,
+
+                `Дата: ${currentDate.toLocaleDateString('uk-UA')}`
+
+              ],
+
+              [
+
+                {
+                  text:
+                  `Час: ${currentDate.toLocaleTimeString('uk-UA')}`,
+
+                  alignment:'right'
+                }
+
+              ]
+
+            ]
+          },
+
+          {
+            text:'\nІНФОРМАЦІЯ ПРО КЛІЄНТА',
+            style:'section'
+          },
+
+          {
+            table:{
+
+              widths:['35%','*'],
+
+              body:[
+
+                [
+
+                  {text:'ПІБ',bold:true},
+
+                  `${document.getElementById('surname').value}
+
+                  ${document.getElementById('name').value}`
+                ],
+
+                [
+
+                  {text:'Телефон',bold:true},
+
+                  document.getElementById('phone').value
+                ],
+
+                [
+
+                  {text:'Пристрій',bold:true},
+
+                  device.value === 'laptop'
+                  ? 'Ноутбук'
+                  : 'Стаціонарний ПК'
+                ],
+
+                [
+
+                  {text:'Оплата',bold:true},
+
+                  getPayment()
+                ]
+
+              ]
+            },
+
+            margin:[0,10,0,20]
+          },
+
+          {
+            text:'ПОСЛУГИ',
+            style:'section'
+          },
+
+          {
+            table:{
+
+              widths:['75%','25%'],
+
+              body:tableBody
+            }
+          },
+
+          {
+            text:
+
+            '\nДякуємо за звернення до Укрспецобладнання\nГарантія на роботи — 30 днів',
+
+            alignment:'center',
+
+            italics:true,
+
+            margin:[0,30,0,0]
+          }
+
+        ],
+
+        styles:{
+
+          company:{
+            fontSize:22,
+            bold:true,
+            alignment:'center'
+          },
+
+          subtitle:{
+            fontSize:11,
+            alignment:'center'
+          },
+
+          contacts:{
+            fontSize:9,
+            alignment:'center',
+            color:'gray'
+          },
+
+          title:{
+            fontSize:18,
+            bold:true,
+            alignment:'center'
+          },
+
+          section:{
+            fontSize:13,
+            bold:true
+          }
+
+        }
+
+      };
+
+      pdfMake
+        .createPdf(docDefinition)
+        .download(`Чек_${orderNumber}.pdf`);
+    }
+
+    services.forEach(service=>{
+
+      service.addEventListener(
+        'change',
+        calculateTotal
+      );
+
+    });
+
+    urgent.addEventListener(
+      'change',
+      calculateTotal
+    );
+
+    device.addEventListener('change', ()=>{
+
+      updatePrices();
+
+      calculateTotal();
+
+    });
+
+    updatePrices();
+
+    calculateTotal();
+
+  </script>
+
+</body>
+
+</html>
